@@ -1,0 +1,96 @@
+<!-- {{newUser|json}} -->
+pristine- {{userForm.pristine|json}}<br>
+dirty- {{userForm.dirty|json}}<br>
+valid- {{userForm.valid|json}}<br>
+invalid- {{userForm.invalid|json}}<br>
+{{userForm.value|json}}<br>
+<form #userForm="ngForm" class="container" method="post">
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">Full name</label>
+        <input type="text" class="form-control" id="name" #userFullName="ngModel" [(ngModel)]="newUser.name" name="name"
+            required minlength="5" maxlength="10">
+        <div class="alert alert-danger" *ngIf="userFullName.errors?.['minlength']">
+            Minimum length should be 5 character
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">User name</label>
+        <input type="text" class="form-control" [(ngModel)]="newUser.username" name="username" pattern="^[a-zA-Z]+$"
+            #userName="ngModel" required>
+        <div class="alert alert-danger" *ngIf="userName.errors?.['pattern']">
+            Should only need to contain alphabet
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">Email</label>
+        <input type="email" class="form-control" [(ngModel)]="newUser.email" name="email" email required>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">Street</label>
+        <input type="text" class="form-control" [(ngModel)]="newUser.address.street" name="street">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">Suite</label>
+        <input type="text" class="form-control" [(ngModel)]="newUser.address.suite" name="suite">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">city</label>
+        <input type="text" class="form-control" [(ngModel)]="newUser.address.city" name="city">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">Zip Code</label>
+        <input type="text" class="form-control" [(ngModel)]="newUser.address.zipcode" name="zipcode">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">Latitude</label>
+        <input type="text" class="form-control" [(ngModel)]="newUser.address.geo.lat" name="lat">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">Longitute</label>
+        <input type="text" class="form-control" [(ngModel)]="newUser.address.geo.lng" name="lng">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">Phone</label>
+        <input type="text" class="form-control" [(ngModel)]="newUser.phone" name="phone">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">Website name</label>
+        <input type="text" class="form-control" [(ngModel)]="newUser.website" name="website">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">Company name</label>
+        <input type="text" class="form-control" [(ngModel)]="newUser.company.name" name="company-name">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">Catch Phrase</label>
+        <input type="text" class="form-control" [(ngModel)]="newUser.company.catchPhrase" name="catchPhrase">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">BS</label>
+        <input type="text" class="form-control" [(ngModel)]="newUser.company.bs" name="bs">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputtext1" class="form-label">BS</label>
+        <input type="number" class="form-control" name="rating" [(ngModel)]="rating" min="1" max="5">
+    </div>
+
+
+    <div class="text-center">
+        <button type="submit" (click)="submitUser()" class="btn btn-primary"
+            [disabled]="userForm.invalid">Submit</button>
+
+    </div>
+</form>

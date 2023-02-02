@@ -16,10 +16,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { NavComponent } from './nav/nav.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { PostCommentComponent } from './post-comment/post-comment.component';
-import { UserPostComponent } from './user-post/user-post.component';
+import { NavComponent } from './component/nav/nav.component';
+import { NotFoundComponent } from './component/not-found/not-found.component';
+import { PostCommentComponent } from './component/post-comment/post-comment.component';
+import { UserPostComponent } from './component/user-post/user-post.component';
+import { UserAddComponent } from './component/user-add/user-add.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { UserPostComponent } from './user-post/user-post.component';
     NavComponent,
     NotFoundComponent,
     PostCommentComponent,
-    UserPostComponent
+    UserPostComponent,
+    UserAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { UserPostComponent } from './user-post/user-post.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

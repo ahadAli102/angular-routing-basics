@@ -1,0 +1,24 @@
+<div class="tab-content container-fluid p-5">
+    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+        <form>
+            <div appHover [color]="'red'" class="form-outline mb-4">
+                <input type="text" name="loginName" class="form-control" [(ngModel)]="name" />
+                <label class="form-label" for="loginName">User name</label>
+            </div>
+            <div  class="form-outline mb-4">
+                <input #emailControll="ngModel" appEmailvalidator appHover color="stealblue" type="text" name="loginPassword" class="form-control" [(ngModel)]="email" />
+                <label class="form-label" for="loginPassword">Email</label>
+                <div>
+                    {{emailControll.errors | json}}
+                </div>
+            </div>
+            <div class="row mb-4">
+
+                <div appHover class="col-md-6 d-flex justify-content-center">
+                    <button (click)="login()" class="btn btn-primary btn-block mb-4">Sign in</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

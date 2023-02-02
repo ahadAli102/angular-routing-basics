@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { User } from 'src/app/interface/user';
 import { UserService } from 'src/app/service/user.service';
 
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class UserAddComponent {
 
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService) { }
 
   newUser: User = {
     name: '',
@@ -34,13 +35,36 @@ export class UserAddComponent {
     }
   };
 
-  rating!:number
+  rating!: number
 
 
-  submitUser() {
+  submitUser(userForm: NgForm) {
     console.log('add user', this.newUser);
-    this.userService.chrateUser(this.newUser).subscribe((data)=>{
-      console.log('user added',data);
+    this.userService.chrateUser(this.newUser).subscribe((data) => {
+      console.log('user added', data);
+      // userForm.resetForm();
+      userForm.resetForm({
+        name: 'new user',
+        username: '',
+        email: '',
+        address: {
+          street: '',
+          suite: '',
+          city: '',
+          zipcode: '',
+          geo: {
+            lat: '',
+            lng: ''
+          }
+        },
+        phone: '',
+        website: '',
+        company: {
+          name: '',
+          catchPhrase: '',
+          bs: ''
+        }
+      })
     });
   }
 }

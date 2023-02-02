@@ -22,6 +22,9 @@ import { PostCommentComponent } from './component/post-comment/post-comment.comp
 import { UserPostComponent } from './component/user-post/user-post.component';
 import { UserAddComponent } from './component/user-add/user-add.component';
 import { FormsModule } from '@angular/forms';
+import { UserLoginComponent } from './component/user-login/user-login.component';
+import { HoverDirective } from './directive/hover.directive';
+import { EmailvalidatorDirective } from './validator/emailvalidator.directive';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { FormsModule } from '@angular/forms';
     PostCommentComponent,
     UserPostComponent,
     UserAddComponent,
+    UserLoginComponent,
+    HoverDirective,
+    EmailvalidatorDirective,
   ],
   imports: [
     BrowserModule,

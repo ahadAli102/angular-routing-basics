@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../interface/user';
 import { environment } from 'src/environments/environment.development';
@@ -19,6 +19,12 @@ export class UserService {
 
   getUser(): Observable<User>{
     return this.http.get<User>(this.API_URL +'/users/1')
+  }
+ 
+  validateLogin(email:string,userName:string): Observable<User[]>{
+    // https://jsonplaceholder.typicode.com/users?username=Bret&email=Sincere@april
+    let myParams = new HttpParams().set('username', userName).set('email', email);
+    return this.http.get<User[]>(this.API_URL +'/users',{params: myParams});
   }
 
   chrateUser(user:User) : Observable<User>{
